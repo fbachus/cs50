@@ -9,37 +9,43 @@ int main(void){
     string hash0 = get_string("input key:");
     char key1[] = "     ";
     int a = 0;
-    int b;
+    int b = 'A';
     // hash0 = crypt(key0, 50);
-    for (int i =1; i < (pow(57, 5) + 1); i++) {
-        b = 'A';
+    for (int i = 1; i < (pow(52, 5) + 1); i++) {
         string hash1 = crypt(key1, "50");
+        int divi = (i / 52) % 52;
+        // printf("%c", b);
         if (hash0 == hash1){
             printf("hallo %s", key1);
             return 0;
         }
-        else {
-            if (i % 57 == 1 ){
-                if ((i/57) > 0){
-                    b = b - 57;
-                }
-                double d = log10(i) / log10(57);
-                for (int w = 0; w < d; w++){
-                    key1[w] = 'A';
-                }
-                key1[(int)d]++;
-                if (i % 10000 == 0){
-                    printf("%s, %i \n", key1, i);
-                }
+        if ((i % 52) == 26){
+            b = b + 6;
+        }
+        if (i % 10000 == 0){
+            printf("%s, %i \n", key1, i);
+        }
+        if (i % 52 == 0 ){
+            b = 'A';
+            double d = log10(i) / log10(52);
+            for (int w = 0; w < d; w++){
+                key1[w] = 'A';
             }
-            else{
-                int r = i % 57;
-                key1[0] = (char) (r + 65);
-                // key1[0] = b;
+            if ((key1[(int)d]) == ' '){
+                key1[(int)d] = 'A';
+            }
+            else if ((key1[(int)d]) == 'Z'{
+                key1[(int)d] = key1[(int)d] + 6;
+            }
+            else {
+                key1[(int)d]++;
             }
         }
-        b++;
-        // printf("%s \n", key1);
+        else{
+            key1[0] = b;
+            b++;
+            // key1[0] = b;
+        }
     }
     printf("nothing matched\n");
 }
