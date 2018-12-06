@@ -7,48 +7,42 @@
 // -----------------------------------------
 //   --- give the variables good names ---
 // -----------------------------------------
+int increase_char(int);
 
 int main(void){
     string hash0 = get_string("input key:");
-    char key1[] = "     ";
-    int b = 'A';
+    char key[6] ;
+    printf("%s\n", key);
     // hash0 = crypt(key0, 50);
     for (int i = 1; i < (pow(52, 5) + 1); i++) {
-        string hash1 = crypt(key1, "50");
-        // int divi = (i / 52) % 52;
-        // printf("%c", b);
+        string hash1 = crypt(key, "50");
         if (hash0 == hash1){
-            printf("hallo %s", key1);
+            printf("hallo %s", key);
             return 0;
         }
-        if ((i % 52) == 26){
-            b = b + 6;
-        }
         if (i % 10000 == 0){
-            printf("%s, %i \n", key1, i);
+            printf("%s, %i \n", key, i);
         }
-        if (i % 52 == 0 ){
-            b = 'A';
-            double d = (log10(i) / log10(52) - 1);
-            printf("%i", (int)d);
-            if ((key1[(int)d]) == ' '){
-                key1[(int)d] = 'A';
+        for (int cha = 0; cha < 6; cha++){
+            if (key[cha] == 'z'){
+                key[cha + 1] = increase_char(key[cha + 1]);
             }
-            else if ((key1[(int)d]) == 'Z'){
-                key1[(int)d] = key1[(int)d] + 6;
-            }
-            else {
-                key1[(int)d] = key1[(int)d] + 1;
-            }
-            // for (int w = 0; w < d; w++){
-            //     key1[w] = 'A';
-            // }
         }
-        else{
-            key1[0] = b;
-            b++;
-            // key1[0] = b;
-        }
+        key[0] = increase_char(key[0]);
     }
     printf("nothing matched\n");
 }
+
+int increase_char(int changeable_char){
+    if (changeable_char == ' ' || changeable_char == 'z' || (changeable_char < 'A' && changeable_char > 'z')){
+        changeable_char = 'A';
+    }
+    else if (changeable_char == 'Z'){
+        changeable_char = 'a';
+    }
+    else{
+        changeable_char++;
+    }
+    return changeable_char;
+}
+//|| changeable_char == '@'
