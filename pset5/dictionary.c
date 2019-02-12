@@ -63,7 +63,13 @@ bool load(const char *dictionary) //fin
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {
+<<<<<<< HEAD
     return dictsize;
+=======
+    // TODO
+    if (dictsize != 0) return dictsize;
+    return 0;
+>>>>>>> 20b1d308ea723dc9f3e83b82e1dfd63976be1cbf
 }
 
 // Unloads dictionary from memory, returning true if successful else false
@@ -80,10 +86,8 @@ bool free_trie(Trie *chain)
 {
     for(int i = 0; i < 26; i++)
     {
-        if (chain->Branch[i] == NULL)
-        {
-            free_trie(chain->Branch[i]);
-        }
+        if (chain->Branch[i] == NULL) continue;
+        free_trie(chain->Branch[i]);
     }
     free(chain);
     return true;
