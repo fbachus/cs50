@@ -11,7 +11,7 @@ TODO
 TODO
 
 ## Per that same man page, how many members are in a variable of type `struct rusage`?
-## one 
+## one
 
 TODO
 
@@ -30,5 +30,6 @@ TODO
 TODO
 
 ## Why do you think we declared the parameters for `check` and `load` as `const` (which means "constant")?
+## So they are not changed by accident
 
 TODO
