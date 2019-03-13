@@ -12,4 +12,4 @@
 # re-ignore cloud 9 files and eslintrc, both included in the IDE
 .c9/*
 .eslintrc
-__pycache__
+__pycache__/
