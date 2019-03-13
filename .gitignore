@@ -9,9 +9,6 @@
 # un-ignore all directories 
 !*/
 
-#ignore pycache
-*pycache*/
-
 # re-ignore cloud 9 files and eslintrc, both included in the IDE
 .c9/*
 .eslintrc
